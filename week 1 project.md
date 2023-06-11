@@ -61,7 +61,7 @@ where rk = 1
 order by last_name, first_name
 ```
 
-# Exercise #2
+# Exercise #2 - use of pivot & flatten
 ```sql
 -- reused customer_info cte from exercise 1 to identify eligible customers based on location
 -- joined customer_info, customer_survey, and recipe_tags together to find customer preferences from survey. Used row_number to find top 3 preferences
