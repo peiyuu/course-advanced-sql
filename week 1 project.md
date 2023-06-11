@@ -2,7 +2,8 @@
 ```sql
 -- created customer_info cte to identify eligible customers and get the geo_location of customers
 -- joined supplier_info to us_cities table to find the geo_location of suppliers
--- cross joined both tables together and used st_distance to calculate difference between customer address and supplier. Divided the difference by 1609 to convert it into miles. Used a window function to determine the closest supplier
+-- cross joined both tables and used st_distance to calculate the distance between customer address and supplier
+-- divided distance by 1609 to conver into miles. Used a window function to determine the closest supplier
 
 with customer_info as (
 select    
@@ -64,9 +65,11 @@ order by last_name, first_name
 # Exercise #2 - use of pivot & flatten
 ```sql
 -- reused customer_info cte from exercise 1 to identify eligible customers based on location
--- joined customer_info, customer_survey, and recipe_tags together to find customer preferences from survey. Used row_number to find top 3 preferences
+-- joined customer_info, customer_survey, and recipe_tags together to find customer preferences from survey
+-- used row_number to find top 3 preferences
 -- used pivot function to pivot rows into separate columns 
--- flattened json values from the chefs_recipes table to get a list of tags and their corresponding recipes. Used min function to return one recipe
+-- flattened json values from the chefs_recipes table to get a list of tags and their corresponding recipes
+-- used min function to return one recipe
 -- joined pivot and recipe tables to return a list of customers, food preferences, and suggested recipe
 
 with customer_info as (
