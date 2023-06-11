@@ -1,2 +1,2 @@
 # course-advanced-sql
-CoRise course
+CoRise course project answers
