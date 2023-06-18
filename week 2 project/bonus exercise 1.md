@@ -1,4 +1,4 @@
-# Supplmental Exercise #1
+# Bonus Exercise #1
 ```sql
 -- get recipe ingredients
 with ingredients as (
