@@ -1,5 +1,4 @@
 # Exercise #1
-
 ``` sql
 -- clean up us cities
 with us_cities_sanitized as (
