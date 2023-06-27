@@ -24,6 +24,7 @@ select
     , event_timestamp::date as session_date
     , timediff(second, min(event_timestamp), max(event_timestamp)) as session_duration_seconds
     , sum(case when trim(event_activity) = 'search' then 1 else 0 end) as search_count
+    , sum(case when trim(event_activity) = 'view_recipe' then 1 else 0 end) as view_count
 from event_info e
 group by 
     session_id
@@ -59,7 +60,7 @@ select
     , count(distinct session_id) as total_unique_event_sessions
     -- round to decimals
     , round(avg(session_duration_seconds), 2) as avg_session_length_seconds
-    , round(avg(search_count),2) as avg_search_counts
+    , round(div0(sum(search_count),sum(view_count)),2) as avg_search_counts
     , listagg(distinct recipe_id, ', ') within group (order by recipe_id asc) as recipe_id
 from daily_session_summary d
 -- use left join to get the recipe_id from the right table 
