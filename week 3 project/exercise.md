@@ -1,4 +1,4 @@
-# Exercise #1
+# Exercise
 ``` sql
 with event_info as (
 select
