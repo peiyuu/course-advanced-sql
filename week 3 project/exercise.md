@@ -1,5 +1,10 @@
 # Exercise
 ``` sql
+-- my optimization strategy is to limit the primary table we will be pulling from to only include necessary fields and filter for event and recipe_id fields. 
+-- removed any order by's in the query
+-- my query plan revealed that joins were the most costly nodes, so I removed the join/max functions and used rank instead to find the most viewed recipe by date 
+-- in the final query, only one join is used. 
+
 with event_info as (
 select
      distinct a.session_id
@@ -60,5 +65,4 @@ from daily_session_summary d
 -- use left join to get the recipe_id from the right table 
 left join most_viewed_recipe_id m on d.session_date = m.session_date
 group by d.session_date
--- order by d.session_date desc
-``` 
+-- order by d.session_date desc```
